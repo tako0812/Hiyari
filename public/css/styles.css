@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
+* {
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:active {
+    text-decoration: none;
+}
+
+.card {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.error {
+    color: #ff0000;
+}
+
+.futmenu {
+    position: fixed;
+    bottom: 0;
+    /* width: 100%; */
+    text-align: center;
+    height: 3.5rem;
+    line-height: 3.5rem;
+    border-top: 1px solid rgb(239, 243, 244);
+    background-color: #f8fafc;
+}
+
+.btm-images {
+    height: 1.8rem;
+    width: 1.8rem;
+}
+
+.arrow-right {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    margin: 0 10px;
+    border-top: 4px solid #000;
+    border-right: 4px solid #000;
+    transform: rotate(45deg);
+}
