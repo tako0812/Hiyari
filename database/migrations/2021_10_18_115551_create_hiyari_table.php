@@ -14,9 +14,10 @@ class CreateHiyariTable extends Migration
     public function up()
     {
         Schema::create('hiyari', function (Blueprint $table) {
-            $table->id();
+            $table->id()->unique();
             $table->string('work_id');
             $table->string('train_id');
+            $table->string('user_id');
             $table->string('title');
             $table->string('text');
             $table->timestamp('register');

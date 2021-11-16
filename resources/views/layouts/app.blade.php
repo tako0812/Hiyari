@@ -63,7 +63,7 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                             document.getElementById('logout-form').submit();">
+                                                                     document.getElementById('logout-form').submit();">
                                         {{ __('ログアウト') }}
                                     </a>
 
@@ -84,25 +84,22 @@
         </main>
         <div class="container-fluid futmenu d-lg-none">
             <div class="row justify-content-center secondry">
-                    <a class="col" href="{{ route('hiyari.new')}}">
+                <a class="col" href="{{ route('hiyari.new') }}">
                     <img src="/images/home.png" class="btm-images">
-                    </a>
-                    
-                    <a class="col" href="{{ route('home')}}">
-                        <img src="/images/search.png" class="btm-images">
-                    </a>
-                    <a class="col" href="{{ route('hiyari.create')}}">
-                        <img src="/images/create.png" class="btm-images">
-                    </a>
-                    <div class="col">
-                        <img src="/images/person.png" class="btm-images">
-                    </div>
-        
-            </div>
-    </div>
+                </a>
 
+                <a class="col" href="{{ route('home') }}">
+                    <img src="/images/search.png" class="btm-images">
+                </a>
+                <a class="col" href="{{ route('hiyari.create') }}">
+                    <img src="/images/create.png" class="btm-images">
+                </a>
+                <a class="col" href="{{ route('user.index') }}">
+                    <img src="/images/person.png" class="btm-images">
+                </a>
+            </div>
+        </div>
+    </div>
 </body>
 
-
-</div>
 </html>

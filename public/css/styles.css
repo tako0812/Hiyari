@@ -45,3 +45,7 @@ a:active {
     border-right: 4px solid #000;
     transform: rotate(45deg);
 }
+
+.liked {
+    color: pink;
+}

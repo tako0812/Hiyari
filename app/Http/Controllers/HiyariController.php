@@ -9,6 +9,9 @@ use App\Train;
 use App\Jobs;
 use App\Age;
 use App\Operation;
+use App\Nice;
+use App\Like;
+use Illuminate\Support\Facades\Auth;
 
 class HiyariController extends Controller
 {
@@ -30,7 +33,8 @@ class HiyariController extends Controller
     {
         $hiyari = new Hiyari;
         $ret = $hiyari->get_hiyari_by_hiyari_id($id);
-        return view('HiyariDetail', compact('ret'));
+        $nice=Nice::where('hiyari_id', $id)->where('user_id', auth()->user()->id)->first();
+        return view('HiyariDetail', compact('ret','hiyari','nice'));
     }
     public function create()
     {
@@ -57,31 +61,31 @@ class HiyariController extends Controller
     }
 
 
-    public function store(Request $request)
-    {
+    // public function store(Request $request)
+    // {
 
-        $request->validate([
-            'work_id' => 'required', // requiredというルールを適用
-        ]);
+    //     $request->validate([
+    //         'work_id' => 'required', // requiredというルールを適用
+    //     ]);
 
-        $input = $request->all();
-        unset($input['_token']);
-        $hiyari = new Hiyari;
-        $hiyari->work_id = $request->work_id;
-        $hiyari->train_id = $request->train_id;
-        $hiyari->title = $request->title;
-        $hiyari->text = $request->text;
-        $hiyari->register = $request->register;
-        $hiyari->day = $request->day;
-        $hiyari->time = $request->time;
-        $hiyari->age_id = $request->age;
-        $hiyari->jobs_id = $request->jobs;
-        $hiyari->place = $request->place;
-        $hiyari->operation_id = $request->work;
-        $hiyari->measures = "未対応";
-        $hiyari->save();
-        return view('thankyou');
-    }
+    //     $input = $request->all();
+    //     unset($input['_token']);
+    //     $hiyari = new Hiyari;
+    //     $hiyari->work_id = $request->work_id;
+    //     $hiyari->train_id = $request->train_id;
+    //     $hiyari->title = $request->title;
+    //     $hiyari->text = $request->text;
+    //     $hiyari->register = $request->register;
+    //     $hiyari->day = $request->day;
+    //     $hiyari->time = $request->time;
+    //     $hiyari->age_id = $request->age;
+    //     $hiyari->jobs_id = $request->jobs;
+    //     $hiyari->place = $request->place;
+    //     $hiyari->operation_id = $request->work;
+    //     $hiyari->measures = "未対応";
+    //     $hiyari->save();
+    //     return view('thankyou');
+    // }
 
     public function post(Request $request)
     {
@@ -128,23 +132,11 @@ class HiyariController extends Controller
         //ここでメールを送信するなどを行う
         $hiyari = new Hiyari;
         $hiyari->fill($input);
-
         $hiyari->measures = "未対応";
+        $user=Auth::user();
+        $hiyari->user_id=$user->user_id;
+        
         $hiyari->save();
-        // $hiyari->work_id = $input["work_id"];
-        // $hiyari->train_id = $input["train_id"];
-        // $hiyari->title = $input["title"];
-        // $hiyari->text = $input["text"];
-        // $hiyari->register= $input["register"];
-        // $hiyari->day = $input["day"];
-        // $hiyari->time = $input["time"];
-        // $hiyari->age_id = $input["age_id"];
-        // $hiyari->jobs_id = $input["job_id"];
-        // $hiyari->place = $input["place"];
-        // $hiyari->operation_id = $input["operation_id"];
-
-
-
 
         //セッションを空にする
         $request->session()->forget("form_input");
@@ -211,4 +203,29 @@ class HiyariController extends Controller
         $hiyari->delete();
         return redirect('/');
     }
+
+
+
+
+    public function like(Request $request)
+{
+    $user_id = Auth::user()->id; //1.ログインユーザーのid取得
+    $review_id = $request->review_id; //2.投稿idの取得
+    $already_liked = Like::where('user_id', $user_id)->where('review_id', $review_id)->first(); //3.
+
+    if (!$already_liked) { //もしこのユーザーがこの投稿にまだいいねしてなかったら
+        $like = new Like; //4.Likeクラスのインスタンスを作成
+        $like->review_id = $review_id; //Likeインスタンスにreview_id,user_idをセット
+        $like->user_id = $user_id;
+        $like->save();
+    } else { //もしこのユーザーがこの投稿に既にいいねしてたらdelete
+        Like::where('review_id', $review_id)->where('user_id', $user_id)->delete();
+    }
+    //5.この投稿の最新の総いいね数を取得
+    $review_likes_count = Hiyari::withCount('likes')->findOrFail($review_id)->likes_count;
+    $param = [
+        'review_likes_count' => $review_likes_count,
+    ];
+    return response()->json($param); //6.JSONデータをjQueryに返す
+}
 }

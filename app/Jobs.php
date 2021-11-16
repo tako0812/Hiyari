@@ -14,7 +14,7 @@ class Jobs extends Model
     public function Hiyaris(){
         return $this->hasMany('App\Hiyari');
     }
-    public function User(){
+    public function Users(){
         return $this->hasMany('App\User');
     }
     

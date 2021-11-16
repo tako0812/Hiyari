@@ -52,17 +52,6 @@
                                 @enderror
                             </div>
                         </div>
-
-                        <!-- <div class="form-group">
-                            <label for="select1a">勤務番号を選択してください</label>
-                            <select id="select1a" class="form-control">
-                                <option>11</option>
-                                <option>12</option>
-                            </select>
-                        </div> -->
-
-
-
                         <div class="form-group row">
                             <div class="col-md-6 offset-md-4">
                                 <div class="form-check">
@@ -92,27 +81,6 @@
 
                             </div>
                         </div>
-                        <!-- 
-                        </br>
-                        <div class="card card-body" style="width: 18rem;">
-                            <h5 class="card-title">作業中にヒヤリ</h5>
-                            <p class="card-text">いつもの作業中にこんなヒヤリがありました。気を付けてください</p>
-                            <a href="#" class="btn btn-primary">詳細</a>
-                        </div>
-                        </br>
-                        <div class="card card-body" style="width: 18rem;">
-                            <h5 class="card-title">運搬中にヒヤリ</h5>
-                            <p class="card-text">いつもと違う運搬作業をしているときにヒヤリがありました。注意が必要です。</p>
-                            <a href="#" class="btn btn-primary">詳細</a>
-                        </div>
-                        </br>
-                        <div class="card card-body" style="width: 18rem;">
-                            <h5 class="card-title">出会い頭にヒヤリ</h5>
-                            <p class="card-text">車を運転中に出合い頭に事故にあいそうでした。ヒヤリとしたので気を付けてください。</p>
-                            <a href="#" class="btn btn-primary">ボタン</a>
-                        </div>
-                        </br>  -->
-
                     </form>
                 </div>
             </div>

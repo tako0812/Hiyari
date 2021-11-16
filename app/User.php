@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'password',
+        'name', 'password','job_name','jobs_id'
     ];
 
     /**
@@ -37,14 +37,27 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+
+
+    public function get_user_by_id($id)
+    {
+        $ret = $this->where('user_id', $id)->first();
+        return $ret;
+    }
+
+
     public function Hiyaris(){
         return $this->hasMany('App\Hiyari');
     }
-    public function jobs(){
-        return $this->hasMany('App\jobs');
+    public function job(){
+        return $this->belongsTo('App\Jobs','jobs_id');
     }
-
-
-
+    public function nices() {
+        return $this->hasMany('App\Nice');
+    }
+    public function likes()
+    {
+        return $this->hasMany('App\Like');
+    }
 
 }

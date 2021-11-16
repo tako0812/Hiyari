@@ -19,6 +19,20 @@ class Hiyari extends Model
         $ret = $this->where('id', $id)->first();
         return $ret;
     }
+    public function get_hiyari_by_user_id($user_id){
+        $ret =$this->where('user_id',$user_id)->get();
+        return $ret;
+    }
+
+    public function likes()
+    {
+        return $this->hasMany('App\Like');
+    }
+    //後でViewで使う、いいねされているかを判定するメソッド。
+    public function isLikedBy($user): bool {
+        return Like::where('user_id', $user->id)->where('hiyari_id', $this->id)->first() !==null;
+    }
+
     public function get_hiyari_new()
     {
         $ret = $this->latest()->get();
@@ -35,6 +49,9 @@ class Hiyari extends Model
     }
     public function operation(){
         return $this->belongsTo('App\Operation');
+    }
+    public function nices() {
+        return $this->hasMany('App\Nice');
     }
     
 }
