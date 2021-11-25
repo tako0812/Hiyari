@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Hiyari extends Model
 {
     protected $table = 'hiyari';
-    protected $fillable = ['work_id','train_id','day','time','jobs_id','age_id','operation_id','place','text','title'];
- 
+    protected $fillable = ['work_id', 'train_id', 'day', 'time', 'jobs_id', 'age_id', 'operation_id', 'place', 'text', 'title'];
+
     public function get_hiyari_by_work_id($id)
     {
         $ret = $this->where('work_id', $id)->get();
@@ -19,8 +19,9 @@ class Hiyari extends Model
         $ret = $this->where('id', $id)->first();
         return $ret;
     }
-    public function get_hiyari_by_user_id($user_id){
-        $ret =$this->where('user_id',$user_id)->get();
+    public function get_hiyari_by_user_id($user_id)
+    {
+        $ret = $this->where('user_id', $user_id)->get();
         return $ret;
     }
 
@@ -29,29 +30,36 @@ class Hiyari extends Model
         return $this->hasMany('App\Like');
     }
     //後でViewで使う、いいねされているかを判定するメソッド。
-    public function isLikedBy($user): bool {
-        return Like::where('user_id', $user->id)->where('hiyari_id', $this->id)->first() !==null;
+    public function isLikedBy($user, $hiyari): bool
+    {
+        return Like::where('user_id', $user->user_id)->where('hiyari_id', $hiyari)->first() !== null;
     }
+
 
     public function get_hiyari_new()
     {
         $ret = $this->latest()->get();
         return $ret;
     }
-    public function jobs(){
+
+    public function jobs()
+    {
         return $this->belongsTo('App\Jobs');
     }
-    public function age(){
+    public function age()
+    {
         return $this->belongsTo('App\Age');
     }
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo('App\User');
     }
-    public function operation(){
+    public function operation()
+    {
         return $this->belongsTo('App\Operation');
     }
-    public function nices() {
+    public function nices()
+    {
         return $this->hasMany('App\Nice');
     }
-    
 }

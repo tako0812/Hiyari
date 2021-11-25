@@ -26,4 +26,5 @@ class UserController extends Controller
         $hiyari = $hiyari->get_hiyari_by_user_id($user_id);
         return view('UserHiyariHistory',compact('hiyari'));
     }
+
 }

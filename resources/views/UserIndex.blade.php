@@ -13,7 +13,7 @@
                     あなたの投稿数：
                     あなたの獲得いいね数：
                     ランキング：位
-                    <a href="#"  type="button" class="btn btn-outline-secondary btn-block mt-2">ランキングを確認する</a>
+                    <a href="{{ route('LikeUserRanking')}}"  type="button" class="btn btn-outline-secondary btn-block mt-2">ランキングを確認する</a>
                         <a href="{{ route('user.hiyari')}}"  type="button" class="btn btn-outline-secondary btn-block mt-2">ヒヤリハット投稿履歴</a>
                     <a href="{{ route('user.profile')}}"  type="button" class="btn btn-outline-secondary btn-block mt-2">個人情報の編集</a>
                 </div>

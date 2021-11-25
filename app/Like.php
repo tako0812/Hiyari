@@ -16,4 +16,9 @@ class Like extends Model
     {   //reviewsテーブルとのリレーションを定義するreviewメソッド
         return $this->belongsTo(Hiyari::class);
     }
+    public function LikeCount($id){
+        $ret = $this->where('hiyari_id', $id)->get();
+        return $ret->count();
+    }
+
 }

@@ -19,7 +19,7 @@ class CreateHiyariTable extends Migration
             $table->string('train_id');
             $table->string('user_id');
             $table->string('title');
-            $table->string('text');
+            $table->text('text');
             $table->timestamp('register');
             $table->date('day');
             $table->Time('time');

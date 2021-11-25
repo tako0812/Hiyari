@@ -15,7 +15,7 @@
                         @endforeach                        
                         </select>
                         <button type="button" class="btn btn-outline-secondary btn-block mt-2">勤務番号で検索</button>
-                        <a href="../hiyari/new" type="button" class="btn btn-outline-secondary btn-block mt-2">新着順で表示</a>
+                        <a href="{{ route('hiyari.new') }}" type="button" class="btn btn-outline-secondary btn-block mt-2">新着順で表示</a>
                         <button type="button" class="btn btn-outline-secondary btn-block mt-2">いいね数順で表示</button>
                     </div>
                 </div>

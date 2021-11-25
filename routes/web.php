@@ -23,7 +23,9 @@ Route::middleware(['auth'])->group(function () {
     //トップ画面。
     Route::get('/home', 'HomeController@index')->name('home');
     //新着順でのヒヤリハット共有画面
-    Route::get('/hiyari/new', 'HiyariController@hiyarinew')->name('hiyari.new');
+    Route::get('/', 'HiyariController@hiyarinew')->name('hiyari.new');
+    //いいね数でのヒヤリハット共有画面
+    Route::get('/ranking', 'HiyariController@hiyariranking')->name('hiyari.ranking');
     //勤務ベースでのヒヤリハット共有画面
     Route::get('/work/{id}', 'HiyariController@index')->name('work.hiyari.index');
     //ヒヤリハットの詳細表示画面
@@ -40,14 +42,15 @@ Route::middleware(['auth'])->group(function () {
     Route::post('hiyari/confirm', "HiyariController@send")->name("hiyari.send");
     //ヒヤリハット登録完了画面
     Route::get('/hiyari/thanks', "HiyariController@complete")->name("hiyari.complete");
-    // //ヒヤリハット登録処理
-    // Route::post('hiyari/store', 'HiyariController@store')->name('hiyari.store');
     //ヒヤリハット更新処理
     Route::post('hiyari/update/{id}', 'HiyariController@update')->name('hiyari.update');
     //ヒヤリハット削除の確認画面
     Route::get('hiyari/delete/{id}', 'HiyariController@delete')->name('hiyari.delete');
     //ヒヤリハット削除処理
     Route::post('hiyari/remove', 'HiyariController@remove')->name('hiyari.remove');
+    //ヒヤリハットユーザーランキング
+    Route::get('/hiyari/UserRanking', "HiyariController@LikeUserRanking")->name("LikeUserRanking");
+
 
     //---------------------------------ユーザー処理---------------------------------------------------
     //ユーザー情報詳細
@@ -59,13 +62,7 @@ Route::middleware(['auth'])->group(function () {
     //ユーザーのいいねしたヒヤリハット
 
     //---------------------------------いいね処理---------------------------------------------------
-    // // いいねボタン
-    // Route::get('/reply/nice/{hiyari}', 'NiceController@nice')->name('nice');
-    // Route::get('/reply/unnice/{hiyari}', 'NiceController@unnice')->name('unnice');
-
     Route::post('/like', 'HiyariController@like')->name('hiyari.like');
 
-    Route::get('/', function () {
-        return view('index');
-    });
+
 });

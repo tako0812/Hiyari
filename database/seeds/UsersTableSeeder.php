@@ -22,5 +22,17 @@ class UsersTableSeeder extends Seeder
             'jobs_id'=>'1',
             'password' => bcrypt('19860812') 
         ]);
+        DB::table('users')->insert([
+            'user_id'=>'test1',
+            'name' => '田中太郎',
+            'jobs_id'=>'1',
+            'password' => bcrypt('test1') 
+        ]);
+        DB::table('users')->insert([
+            'user_id'=>'test2',
+            'name' => '田中次郎',
+            'jobs_id'=>'1',
+            'password' => bcrypt('test2') 
+        ]);
     }
 }

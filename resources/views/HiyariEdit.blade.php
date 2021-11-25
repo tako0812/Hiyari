@@ -2,17 +2,21 @@
 
 @section('content')
     <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                @if ($errors->any())
+                    <div class="card-text text-left alert alert-danger">
+                        {{-- <ul class="mb-0"> --}}
 
-        @if ($errors->any())
-            <div class="card-text text-left alert alert-danger">
-                <ul class="mb-0">
-                    @foreach ($errors->all() as $error)
-                        <p class="error">{{ $error }}</p>
-                    @endforeach
+                        @foreach ($errors->all() as $error)
+                            <p class="error">{{ $error }}</p>
+                        @endforeach
 
-                </ul>
+                        {{-- </ul> --}}
+                    </div>
+                @endif
             </div>
-        @endif
+        </div>
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">

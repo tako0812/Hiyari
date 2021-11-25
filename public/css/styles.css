@@ -47,5 +47,21 @@ a:active {
 }
 
 .liked {
-    color: pink;
+    color: #e54747;
+}
+
+body {
+    margin-bottom: 3.5rem;
+}
+
+.material-icons {
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.new-ranking {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
 }

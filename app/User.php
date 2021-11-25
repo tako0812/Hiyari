@@ -59,5 +59,15 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Like');
     }
+    public function get_Like_User_ranking()
+    {
+        $user_hiyari_count = Hiyari::select(User::raw('user_id, COUNT(user_id) AS user_id_count'))
+        ->groupBy('user_id')
+        ->having('user_id_count', '>=', 1)
+        ->orderBy('user_id_count', 'desc')
+        ->get();
+
+        return $user_hiyari_count;
+    }
 
 }

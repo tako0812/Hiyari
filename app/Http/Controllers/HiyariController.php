@@ -9,8 +9,8 @@ use App\Train;
 use App\Jobs;
 use App\Age;
 use App\Operation;
-use App\Nice;
 use App\Like;
+use App\User;
 use Illuminate\Support\Facades\Auth;
 
 class HiyariController extends Controller
@@ -26,15 +26,16 @@ class HiyariController extends Controller
         $train_id = $work->get_work_by_train_id($id);
         $userid = $id;
 
-        return view('hiyari', compact('ret', 'train_id', 'userid'));
+        return view('hiyari', compact('ret', 'train_id', 'hiyari', 'userid'));
     }
 
     public function detail($id)
     {
         $hiyari = new Hiyari;
         $ret = $hiyari->get_hiyari_by_hiyari_id($id);
-        $nice=Nice::where('hiyari_id', $id)->where('user_id', auth()->user()->id)->first();
-        return view('HiyariDetail', compact('ret','hiyari','nice'));
+        $like = new Like;
+        $like_count = $like->LikeCount($id);
+        return view('HiyariDetail', compact('ret', 'like_count', 'hiyari'));
     }
     public function create()
     {
@@ -61,34 +62,45 @@ class HiyariController extends Controller
     }
 
 
-    // public function store(Request $request)
-    // {
 
-    //     $request->validate([
-    //         'work_id' => 'required', // requiredというルールを適用
-    //     ]);
-
-    //     $input = $request->all();
-    //     unset($input['_token']);
-    //     $hiyari = new Hiyari;
-    //     $hiyari->work_id = $request->work_id;
-    //     $hiyari->train_id = $request->train_id;
-    //     $hiyari->title = $request->title;
-    //     $hiyari->text = $request->text;
-    //     $hiyari->register = $request->register;
-    //     $hiyari->day = $request->day;
-    //     $hiyari->time = $request->time;
-    //     $hiyari->age_id = $request->age;
-    //     $hiyari->jobs_id = $request->jobs;
-    //     $hiyari->place = $request->place;
-    //     $hiyari->operation_id = $request->work;
-    //     $hiyari->measures = "未対応";
-    //     $hiyari->save();
-    //     return view('thankyou');
-    // }
 
     public function post(Request $request)
     {
+        $validated = $request->validate(
+            [
+                'work_id' => 'required|integer',
+                'train_id' => 'required|integer',
+                'day' => 'required|date',
+                'time' => 'required',
+                'jobs_id' => 'required|integer',
+                'age_id' => 'required|integer',
+                'place' => 'required|max:50',
+                'title' => 'required|max:100|min:5',
+                'text' => 'required|max:10000|min:20',
+            ],
+            [
+                'work_id.required' => '勤務番号を入力してください',
+                'work_id.integer' => '勤務番号は数字で入れてください',
+                'train_id.required' => '列車番号を入力してください',
+                'train_id.integer' => '勤務番号は数字で入れてください',
+                'day.required' => '日付は必須です',
+                'day.date' => '日付はフォームを使用してください',
+                'time.required' => '時刻は必須です',
+                'jobs_id.required' => '職種は必須です',
+                'jobs_id.integer' => '職種はフォームを使用してください',
+                'age_id.required' => '年齢は必須です',
+                'age_id.integer' => '年齢はフォームを使用してください',
+                'place.required' => '場所は必須です',
+                'place.max' => '場所は最大50文字までです',
+                'title.required' => 'タイトルは必須です',
+                'title.min' => 'タイトルは5文字以上入力してください',
+                'title.max' => 'タイトルは最大100文字までです',
+                'text.required' => 'ヒヤリハット内容を入力してください',
+                'text.min' => 'ヒヤリハット内容は20文字以上入力してください',
+                'text.max' => 'ヒヤリハット内容は最大10000文字までです',
+            ]
+        );
+
         $input = $request->only($this->formItems);
         //セッションに書き込む
         $request->session()->put("form_input", $input);
@@ -133,9 +145,9 @@ class HiyariController extends Controller
         $hiyari = new Hiyari;
         $hiyari->fill($input);
         $hiyari->measures = "未対応";
-        $user=Auth::user();
-        $hiyari->user_id=$user->user_id;
-        
+        $user = Auth::user();
+        $hiyari->user_id = $user->user_id;
+
         $hiyari->save();
 
         //セッションを空にする
@@ -153,6 +165,13 @@ class HiyariController extends Controller
         $ret = $hiyari->get_hiyari_new();
         return view('HiyariNew', compact('ret'));
     }
+    public function hiyariranking()
+    {
+        $ret = Hiyari::withCount('likes')->orderBy('likes_count', 'desc')->paginate(10);
+        return view('HiyariNew', compact('ret'));
+    }
+
+
     public function edit($id)
     {
         $hiyari = new Hiyari;
@@ -180,6 +199,43 @@ class HiyariController extends Controller
     }
     public function update($id, Request $request)
     {
+
+
+        $validated = $request->validate(
+            [
+                'work_id' => 'required|integer',
+                'train_id' => 'required|integer',
+                'day' => 'required|date',
+                'time' => 'required',
+                'jobs_id' => 'required|integer',
+                'age_id' => 'required|integer',
+                'place' => 'required|max:50',
+                'title' => 'required|max:100|min:5',
+                'text' => 'required|max:10000|min:20',
+            ],
+            [
+                'work_id.required' => '勤務番号を入力してください',
+                'work_id.integer' => '勤務番号は数字で入れてください',
+                'train_id.required' => '列車番号を入力してください',
+                'train_id.integer' => '勤務番号は数字で入れてください',
+                'day.required' => '日付は必須です',
+                'day.date' => '日付はフォームを使用してください',
+                'time.required' => '時刻は必須です',
+                'jobs_id.required' => '職種は必須です',
+                'jobs_id.integer' => '職種はフォームを使用してください',
+                'age_id.required' => '年齢は必須です',
+                'age_id.integer' => '年齢はフォームを使用してください',
+                'place.required' => '場所は必須です',
+                'place.max' => '場所は最大50文字までです',
+                'title.required' => 'タイトルは必須です',
+                'title.min' => 'タイトルは5文字以上入力してください',
+                'title.max' => 'タイトルは最大100文字までです',
+                'text.required' => 'ヒヤリハット内容を入力してください',
+                'text.min' => 'ヒヤリハット内容は20文字以上入力してください',
+                'text.max' => 'ヒヤリハット内容は最大10000文字までです',
+            ]
+        );
+
         $input = $request->all();
         unset($input['_token']);
         $hiyari = new Hiyari;
@@ -206,26 +262,33 @@ class HiyariController extends Controller
 
 
 
-
+    //いいね処理
     public function like(Request $request)
-{
-    $user_id = Auth::user()->id; //1.ログインユーザーのid取得
-    $review_id = $request->review_id; //2.投稿idの取得
-    $already_liked = Like::where('user_id', $user_id)->where('review_id', $review_id)->first(); //3.
+    {
 
-    if (!$already_liked) { //もしこのユーザーがこの投稿にまだいいねしてなかったら
-        $like = new Like; //4.Likeクラスのインスタンスを作成
-        $like->review_id = $review_id; //Likeインスタンスにreview_id,user_idをセット
-        $like->user_id = $user_id;
-        $like->save();
-    } else { //もしこのユーザーがこの投稿に既にいいねしてたらdelete
-        Like::where('review_id', $review_id)->where('user_id', $user_id)->delete();
+        $user_id = Auth::user()->user_id; //1.ログインユーザーのid取得
+        $hiyari_id = $request->hiyari_id; //2.投稿idの取得
+        $already_liked = Like::where('user_id', $user_id)->where('hiyari_id', $hiyari_id)->first();
+
+        if (!$already_liked) { //もしこのユーザーがこの投稿にまだいいねしてなかったら
+            $like = new Like; //4.Likeクラスのインスタンスを作成
+            $like->hiyari_id = $hiyari_id; //Likeインスタンスにreview_id,user_idをセット
+            $like->user_id = $user_id;
+            $like->save();
+        } else { //もしこのユーザーがこの投稿に既にいいねしてたらdelete
+            Like::where('hiyari_id', $hiyari_id)->where('user_id', $user_id)->delete();
+        }
+        //5.この投稿の最新の総いいね数を取得
+        $review_likes_count = Hiyari::withCount('likes')->findOrFail($hiyari_id)->likes_count;
+        $param = [
+            'review_likes_count' => $review_likes_count,
+        ];
+        return response()->json($param); //6.JSONデータをjQueryに返す
     }
-    //5.この投稿の最新の総いいね数を取得
-    $review_likes_count = Hiyari::withCount('likes')->findOrFail($review_id)->likes_count;
-    $param = [
-        'review_likes_count' => $review_likes_count,
-    ];
-    return response()->json($param); //6.JSONデータをjQueryに返す
-}
+    public function LikeUserRanking()
+    {
+        $user = new User;
+        $user_hiyari_ranking =$user-> get_Like_User_ranking();
+        return view('LikeUserRanking', ['user_hiyari_ranking'=>$user_hiyari_ranking]);
+    }
 }

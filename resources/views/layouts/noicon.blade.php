@@ -7,7 +7,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
+    
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
@@ -21,12 +21,12 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-
+    
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
-
+    
 
 </head>
 
@@ -63,7 +63,6 @@
                             @endif --}}
                         @else
                             <li class="nav-item dropdown">
-                                
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
@@ -71,50 +70,25 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                                         document.getElementById('logout-form').submit();">
+                                                                     document.getElementById('logout-form').submit();">
                                         {{ __('ログアウト') }}
-                                        
                                     </a>
+
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                         class="d-none">
                                         @csrf
                                     </form>
-                                    <a class="dropdown-item" href="#">ホーム画面</a>
-                                    <a class="dropdown-item" href="#">検索</a>
-                                    <a class="dropdown-item" href="#">投稿</a>
-                                    <a class="dropdown-item" href="#">ユーザー情報</a>
                                 </div>
-
                             </li>
-
                         @endguest
                     </ul>
                 </div>
             </div>
         </nav>
 
-
-
         <main class="py-4">
             @yield('content')
         </main>
-        <div class="container-fluid futmenu d-lg-none">
-            <div class="row justify-content-center secondry">
-                <a class="col" href="{{ route('hiyari.new') }}">
-                    <img src="/images/home.png" class="btm-images">
-                </a>
-
-                <a class="col" href="{{ route('home') }}">
-                    <img src="/images/search.png" class="btm-images">
-                </a>
-                <a class="col" href="{{ route('hiyari.create') }}">
-                    <img src="/images/create.png" class="btm-images">
-                </a>
-                <a class="col" href="{{ route('user.index') }}">
-                    <img src="/images/person.png" class="btm-images">
-                </a>
-            </div>
-        </div>
     </div>
 </body>
 
