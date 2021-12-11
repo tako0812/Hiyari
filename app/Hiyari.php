@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Hiyari extends Model
 {
     protected $table = 'hiyari';
-    protected $fillable = ['work_id', 'train_id', 'day', 'time', 'jobs_id', 'age_id', 'operation_id', 'place', 'text', 'title'];
+    protected $fillable = ['work_id', 'train_id', 'day', 'time', 'jobs_id', 'age_id', 'operation_id', 'place', 'text', 'title','day_of_week'];
 
     public function get_hiyari_by_work_id($id)
     {
@@ -38,7 +38,12 @@ class Hiyari extends Model
 
     public function get_hiyari_new()
     {
-        $ret = $this->latest()->get();
+        $ret = $this->where('day_of_week',"1")->latest()->get();
+        return $ret;
+    }
+    public function get_hiyari_new_holiday()
+    {
+        $ret = $this->where('day_of_week',"2")->latest()->get();
         return $ret;
     }
 
@@ -61,5 +66,9 @@ class Hiyari extends Model
     public function nices()
     {
         return $this->hasMany('App\Nice');
+    }
+    public function day_of_week()
+    {
+        return $this->belongsTo('App\Day_Of_Week');
     }
 }

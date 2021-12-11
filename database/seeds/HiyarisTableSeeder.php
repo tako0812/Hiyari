@@ -26,6 +26,7 @@ class HiyarisTableSeeder extends Seeder
             'place' => '神宮前駅',
             'operation_id' => '1',
             'measures' => '対処済み',
+            'day_of_week'=>'1',
         ]);
         DB::table('hiyari')->insert([
             'work_id' => '52',
@@ -41,6 +42,7 @@ class HiyarisTableSeeder extends Seeder
             'place' => '神宮前駅',
             'operation_id' => '2',
             'measures' => '対処済み',
+            'day_of_week'=>'1',
         ]);
         DB::table('hiyari')->insert([
             'work_id' => '52',
@@ -56,6 +58,7 @@ class HiyarisTableSeeder extends Seeder
             'place' => '神宮前駅',
             'operation_id' => '3',
             'measures' => '対処済み',
+            'day_of_week'=>'2',
         ]);
     }
 }

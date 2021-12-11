@@ -43,13 +43,13 @@ class LoginController extends Controller
 
     public function redirectPath()
     {
-        return 'home';
+        return '/';        
     }
      /**
      * ログアウトしたときの画面遷移先
      */
     protected function loggedOut(\Illuminate\Http\Request $request)
     {
-        return redirect('/home');
+        return redirect('/login');
     }
 }

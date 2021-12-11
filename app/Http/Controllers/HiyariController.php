@@ -8,6 +8,7 @@ use App\Work;
 use App\Train;
 use App\Jobs;
 use App\Age;
+use App\Weeks;
 use App\Operation;
 use App\Like;
 use App\User;
@@ -15,7 +16,7 @@ use Illuminate\Support\Facades\Auth;
 
 class HiyariController extends Controller
 {
-    private $formItems = ["work_id", "train_id", "title", 'text', 'register', 'day', 'time', 'age_id', 'operation_id', 'place', 'jobs_id'];
+    private $formItems = ["work_id", "train_id", "title", 'text', 'register', 'day', 'time', 'age_id', 'operation_id', 'place', 'jobs_id', "day_of_week"];
 
     public function index($id)
     {
@@ -55,10 +56,13 @@ class HiyariController extends Controller
         $age = new Age;
         $age_name = $age->get_age_name();
 
+        $day_of_week = new Weeks();
+        $day_of_week = $day_of_week->get_week_name();
+
         $operation = new Operation;
         $operation_name = $operation->get_operation_name();
 
-        return view('HiyariCreate', compact('work_id', 'train_id', 'job_name', 'age_name', 'operation_name'));
+        return view('HiyariCreate', compact('work_id', 'train_id', 'job_name', 'age_name', 'operation_name', 'day_of_week'));
     }
 
 
@@ -113,20 +117,30 @@ class HiyariController extends Controller
         $input = $request->session()->get("form_input");
         $age = new Age;
         $age_name = $age->get_age_name_by_id($input["age_id"]);
+
         $job = new Jobs;
         $job_name = $job->get_job_name_by_id($input["jobs_id"]);
+
         $operation = new Operation;
         $operation_name = $operation->get_operation_name_by_id($input["operation_id"]);
+
+        $day_of_week = new Weeks;
+        $day_of_week = $day_of_week->get_week_name_by_id($input["day_of_week"]);
+
+    
+
         //セッションに値が無い時はフォームに戻る
         if (!$input) {
             return redirect()->action("HiyariController@create");
         }
-        return view("confirm", ["input" => $input, "age_name" => $age_name, "job_name" => $job_name, "operation_name" => $operation_name]);
+        return view("confirm", ["input" => $input, "age_name" => $age_name, "job_name" => $job_name, "operation_name" => $operation_name, "day_of_week" => $day_of_week]);
     }
     public function send(Request $request)
     {
+    
         //セッションから値を取り出す
         $input = $request->session()->get("form_input");
+       
 
 
         //戻るボタンが押された時
@@ -143,12 +157,14 @@ class HiyariController extends Controller
 
         //ここでメールを送信するなどを行う
         $hiyari = new Hiyari;
+
         $hiyari->fill($input);
         $hiyari->measures = "未対応";
         $user = Auth::user();
         $hiyari->user_id = $user->user_id;
-
         $hiyari->save();
+
+ 
 
         //セッションを空にする
         $request->session()->forget("form_input");
@@ -159,16 +175,32 @@ class HiyariController extends Controller
         return view("thankyou");
     }
 
+    //ヒヤリハット新着順平日
     public function hiyarinew()
     {
         $hiyari = new Hiyari;
         $ret = $hiyari->get_hiyari_new();
         return view('HiyariNew', compact('ret'));
     }
+    //ヒヤリハット新着休日
+    public function HiyariNewHoliday()
+    {
+        $hiyari = new Hiyari;
+        $ret = $hiyari->get_hiyari_new_holiday();
+        return view('HiyariNew', compact('ret'));
+    }
+
+    //ヒヤリハットランキング平日
     public function hiyariranking()
     {
-        $ret = Hiyari::withCount('likes')->orderBy('likes_count', 'desc')->paginate(10);
-        return view('HiyariNew', compact('ret'));
+        $ret = Hiyari::where("day_of_week","1")->withCount('likes')->orderBy('likes_count', 'desc')->paginate(10);
+        return view('HiyariRanking', compact('ret'));
+    }
+    //ヒヤリハットランキング休日
+    public function HiyariRankingHoliday()
+    {
+        $ret = Hiyari::where("day_of_week","2")->withCount('likes')->orderBy('likes_count', 'desc')->paginate(10);
+        return view('HiyariRanking', compact('ret'));
     }
 
 
@@ -288,7 +320,14 @@ class HiyariController extends Controller
     public function LikeUserRanking()
     {
         $user = new User;
-        $user_hiyari_ranking =$user-> get_Like_User_ranking();
-        return view('LikeUserRanking', ['user_hiyari_ranking'=>$user_hiyari_ranking]);
+        $user_hiyari_ranking = $user->get_Like_User_ranking();
+        return view('LikeUserRanking', ['user_hiyari_ranking' => $user_hiyari_ranking]);
+    }
+
+
+
+    public function analytics()
+    {
+        return view('analytics');
     }
 }

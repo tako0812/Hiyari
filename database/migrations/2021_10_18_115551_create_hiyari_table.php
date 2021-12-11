@@ -28,6 +28,7 @@ class CreateHiyariTable extends Migration
             $table->string('place');
             $table->string('operation_id');
             $table->string('measures');
+            $table->string('day_of_week');
             $table->timestamps();
         });
     }

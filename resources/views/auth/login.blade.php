@@ -81,9 +81,7 @@
 
                             </div>
                         </div>
-                        ログイン情報<br>
-                        ユーザーID：test1<br>
-                        パスワード：test1
+
                     </form>
                 </div>
             </div>

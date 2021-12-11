@@ -48,8 +48,10 @@
                         </div>
 
                     </a>
+                    @can('admin-higher')　
                     <a class="btn" href="{{ route('hiyari.edit', ['id' => $inside->id]) }}">編集する</a>
                     <a class="btn" href="{{ route('hiyari.delete', ['id' => $inside->id]) }}">削除する</a>
+                    @endcan
                 </div>
             </div>
 

@@ -57,19 +57,19 @@
                             <!-- Review.phpに作ったisLikedByメソッドをここで使用 -->
                             @if (!$hiyari->isLikedBy(Auth::user(), $ret->id))
                                 <span class="likes">
-                                    <i class="material-icons like-toggle"  data-review-id="{{ $ret->id }}">favorite</i>
+                                    <i class="material-icons like-toggle"  data-review-id="{{ $ret->id }}">thumb_up</i>
                                     <span class="like-counter">{{ $like_count }}</span>
                                 </span><!-- /.likes -->
                             @else
                                 <span class="likes">
-                                    <i class="material-icons like-toggle liked" data-review-id="{{ $ret->id }}">favorite</i>
+                                    <i class="material-icons like-toggle liked" data-review-id="{{ $ret->id }}">thumb_up</i>
                                     <span class="like-counter">{{ $like_count }}</span>
                                 </span><!-- /.likes -->
                             @endif
                         @endauth
                         @guest
                             <span class="likes">
-                                <i class="material-icons">favorite</i>
+                                <i class="material-icons">thumb_up</i>
                                 <span class="like-counter">{{ $like_count }}</span>
                             </span><!-- /.likes -->
 
@@ -78,8 +78,10 @@
                     </div>
                 </div>
 
+                @can('admin-higher')　
                 <a class="btn" href="{{ route('hiyari.edit', ['id' => $ret->id]) }}">編集する</a>
                 <a class="btn" href="{{ route('hiyari.delete', ['id' => $ret->id]) }}">削除する</a>
+                @endcan
   
             </div>
         </div>

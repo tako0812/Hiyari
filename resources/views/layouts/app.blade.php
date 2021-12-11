@@ -63,17 +63,18 @@
                             @endif --}}
                         @else
                             <li class="nav-item dropdown">
-                                
+
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                                         document.getElementById('logout-form').submit();">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                                                     document.getElementById('logout-form').submit();">
                                         {{ __('ログアウト') }}
-                                        
+
                                     </a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                         class="d-none">
@@ -100,19 +101,63 @@
         </main>
         <div class="container-fluid futmenu d-lg-none">
             <div class="row justify-content-center secondry">
-                <a class="col" href="{{ route('hiyari.new') }}">
-                    <img src="/images/home.png" class="btm-images">
-                </a>
 
-                <a class="col" href="{{ route('home') }}">
-                    <img src="/images/search.png" class="btm-images">
-                </a>
-                <a class="col" href="{{ route('hiyari.create') }}">
-                    <img src="/images/create.png" class="btm-images">
-                </a>
-                <a class="col" href="{{ route('user.index') }}">
-                    <img src="/images/person.png" class="btm-images">
-                </a>
+                {{-- アンダーメニューの表示と色の判定 --}}
+                @if (route('hiyari.new') == url()->current() or route('hiyari.new.holiday') == url()->current())
+                    <a class="col" href="{{ route('hiyari.new') }}">
+                        <i class="material-icons undermenu-icon-clicked">home</i>
+                    </a>
+
+                @else
+                    <a class="col" href="{{ route('hiyari.new') }}">
+                        <i class="material-icons undermenu-icon">home</i>
+                    </a>
+                @endif
+                
+                @if (route('hiyari.ranking') == url()->current() or route('hiyari.ranking.holiday') == url()->current())
+                    <a class="col" href="{{ route('hiyari.ranking') }}">
+                        <i class="material-icons undermenu-icon-clicked">emoji_events</i>
+                    </a>
+
+                @else
+                    <a class="col" href="{{ route('hiyari.ranking') }}">
+                        <i class="material-icons undermenu-icon">emoji_events</i>
+                    </a>
+                @endif
+
+
+                @if (route('home') == url()->current())
+                    <a class="col" href="{{ route('home') }}">
+                        <i class="material-icons undermenu-icon-clicked">search</i>
+                    </a>
+
+                @else
+                    <a class="col" href="{{ route('home') }}">
+                        <i class="material-icons undermenu-icon">search</i>
+                    </a>
+                @endif
+
+                @if (route('hiyari.create') == url()->current())
+                    <a class="col" href="{{ route('hiyari.create') }}">
+                        <i class="material-icons undermenu-icon-clicked">edit</i>
+                    </a>
+
+                @else
+                    <a class="col" href="{{ route('hiyari.create') }}">
+                        <i class="material-icons undermenu-icon">edit</i>
+                    </a>
+                @endif
+
+                @if (route('user.index') == url()->current())
+                    <a class="col" href="{{ route('user.index') }}">
+                        <i class="material-icons undermenu-icon-clicked">person</i>
+                    </a>
+
+                @else
+                    <a class="col" href="{{ route('user.index') }}">
+                        <i class="material-icons undermenu-icon">person</i>
+                    </a>
+                @endif
             </div>
         </div>
     </div>

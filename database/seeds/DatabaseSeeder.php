@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             AgeTableSeeder::class,
             OperationsTableSeeder::class,
             TrainsTableSeeder::class,
+            WeekTableSeeder::class,
         ]);
     }
 }
