@@ -67,6 +67,7 @@ class User extends Authenticatable
         ->orderBy('user_id_count', 'desc')
         ->get();
 
+
         return $user_hiyari_count;
     }
 

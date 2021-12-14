@@ -67,8 +67,8 @@ class Hiyari extends Model
     {
         return $this->hasMany('App\Nice');
     }
-    public function day_of_week()
+    public function weeks()
     {
-        return $this->belongsTo('App\Day_Of_Week');
+        return $this->belongsTo('App\Weeks','day_of_week','id');
     }
 }

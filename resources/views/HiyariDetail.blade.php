@@ -9,6 +9,7 @@
                         ヒヤリハットの詳細確認画面
                     </div>
                     <div class="card-body">
+
                         <table class="table">
                             <tr>
                                 <td>タイトル</td>
@@ -17,6 +18,11 @@
                             <tr>
                                 <td>登録日</td>
                                 <td>{{ $ret->register }}</td>
+                            </tr>
+
+                            <tr>
+                                <td>平日休</td>
+                                <td>{{ $ret->weeks->name }}</td>
                             </tr>
                             <tr>
                                 <td>発生日</td>
@@ -57,32 +63,36 @@
                             <!-- Review.phpに作ったisLikedByメソッドをここで使用 -->
                             @if (!$hiyari->isLikedBy(Auth::user(), $ret->id))
                                 <span class="likes">
-                                    <i class="material-icons like-toggle"  data-review-id="{{ $ret->id }}">thumb_up</i>
+                                    <i class="material-icons like-toggle iine" data-review-id="{{ $ret->id }}">thumb_up　いいね！</i>
                                     <span class="like-counter">{{ $like_count }}</span>
                                 </span><!-- /.likes -->
                             @else
                                 <span class="likes">
-                                    <i class="material-icons like-toggle liked" data-review-id="{{ $ret->id }}">thumb_up</i>
+                                    <i class="material-icons like-toggle liked iine"
+                                        data-review-id="{{ $ret->id }}">thumb_up　いいね！</i>
                                     <span class="like-counter">{{ $like_count }}</span>
                                 </span><!-- /.likes -->
                             @endif
                         @endauth
                         @guest
-                            <span class="likes">
-                                <i class="material-icons">thumb_up</i>
+                            <span class="likes ">
+                                <i class="material-icons iine">thumb_up　いいね！</i>
                                 <span class="like-counter">{{ $like_count }}</span>
                             </span><!-- /.likes -->
 
                         @endguest
 
                     </div>
+
+
+
                 </div>
 
                 @can('admin-higher')　
-                <a class="btn" href="{{ route('hiyari.edit', ['id' => $ret->id]) }}">編集する</a>
-                <a class="btn" href="{{ route('hiyari.delete', ['id' => $ret->id]) }}">削除する</a>
+                    <a class="btn" href="{{ route('hiyari.edit', ['id' => $ret->id]) }}">編集する</a>
+                    <a class="btn" href="{{ route('hiyari.delete', ['id' => $ret->id]) }}">削除する</a>
                 @endcan
-  
+
             </div>
         </div>
     </div>

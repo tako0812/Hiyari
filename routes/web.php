@@ -60,7 +60,7 @@ Route::middleware(['auth'])->group(function () {
     //ヒヤリハットユーザーランキング
     Route::get('/hiyari/UserRanking', "HiyariController@LikeUserRanking")->name("LikeUserRanking");
     //ヒヤリハットの解析
-    Route::get('/analytics',"HiyariController@analytics")->name("analytics");
+    // Route::get('/analytics',"HiyariController@analytics")->name("analytics");
 
 
     //---------------------------------ユーザー処理---------------------------------------------------

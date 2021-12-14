@@ -23,10 +23,10 @@ class Work extends Model
         $train_id = work::where('work_id', $id)->groupBy('train_id')->get(['train_id']);
         return $train_id;
     }
-    // public function get_work_by_work_id($id){
-    //     $work_id=work::where('work_id',$id)->groupBy('train_id')->get(['work_id']);
-    //     return $work_id;
-    // }
+    public function get_work_by_work_id($id){
+        $work_id=work::where('work_id',$id)->groupBy('train_id')->get(['work_id']);
+        return $work_id;
+    }
 
 
 

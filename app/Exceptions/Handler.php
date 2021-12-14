@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
+use Illuminate\Session\TokenMismatchException;	//419エラー回避追加
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
 
@@ -50,6 +51,11 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
+        //419エラー対策のため追加
+        if ($exception instanceof TokenMismatchException) {		// 追加
+            return redirect('/login');							// 追加
+        }														// 追加
+
         return parent::render($request, $exception);
     }
 }

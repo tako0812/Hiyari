@@ -17,16 +17,15 @@
                         <div class="card">
                             <div class="card-header collapsed" data-toggle="collapse"
                                 data-target="#card-collapse-1{{ $work->train_id }}">
-                                {{ $work->train_id }}列車
-
+                                {{ $work->train_id }}列車　＞
+                                
                             </div>
                             <div class="card-wrap collapse" id="card-collapse-1{{ $work->train_id }}">
                                 <div class="card-body">
                                     @foreach ($ret as $inside)
                                         @if ($inside->train_id == $work->train_id)
 
-                                            <a href="../hiyari/detail/{{ $inside->id }}"
-                                                class="card text-dark ">
+                                            <a href="../hiyari/detail/{{ $inside->id }}" class="card text-dark ">
                                                 <div class="card-header ">
                                                     {{ $inside->title }}
                                                 </div>
@@ -57,7 +56,7 @@
                                                     </table>
                                                     {{ $inside->text }}
                                                 </div>
-                                        
+
                                             </a>
                                         @endif
 

@@ -70,6 +70,11 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('hiyari.new') }}">新着順に表示</a>
+                                    <a class="dropdown-item" href="{{ route('hiyari.ranking') }}">人気ランキング</a>
+                                    <a class="dropdown-item" href="{{ route('home') }}">検索する</a>
+                                    <a class="dropdown-item" href="{{ route('hiyari.create') }}">投稿する</a>
+                                    <a class="dropdown-item" href="{{ route('user.index') }}">ユーザー情報を確認する</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                                                      document.getElementById('logout-form').submit();">
@@ -80,10 +85,7 @@
                                         class="d-none">
                                         @csrf
                                     </form>
-                                    <a class="dropdown-item" href="#">ホーム画面</a>
-                                    <a class="dropdown-item" href="#">検索</a>
-                                    <a class="dropdown-item" href="#">投稿</a>
-                                    <a class="dropdown-item" href="#">ユーザー情報</a>
+
                                 </div>
 
                             </li>
