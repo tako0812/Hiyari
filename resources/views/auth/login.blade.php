@@ -86,12 +86,20 @@
                 </div>
             </div>
         </div>
-        
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">ver0.1.1アップデート</div>
+                <div class="card-header">ver0.1.2不具合修正【2021年12月31日】</div>
                 <div class="card-body">
-                    2021年12月30日
+                    <p>iPhoneでブラウザバックした時のボタンの表示バグ修正</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">ver0.1.1不具合修正【2021年12月30日】</div>
+                <div class="card-body">
+                   
                     <p>タブレット、スマホで表示されるメニューで、文字が表示される時がある不具合修正</p>
                     <p>bootstrapのコード最適化</p>
                 </div>
@@ -100,10 +108,10 @@
 
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">ver0.1.0公開</div>
+                <div class="card-header">ver0.1.0公開【2021年12月18日】</div>
 
                 <div class="card-body">
-                    2021年12月18日
+                   
                     <p>システム公開</p>
                 </div>
             </div>
