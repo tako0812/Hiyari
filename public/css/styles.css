@@ -103,7 +103,7 @@ body {
 
 /*マテリアアイコンの定義*/
 
-.person:before {
+.person::before {
     font-family: 'Material Icons';
     content: "\e7fd";
 }
