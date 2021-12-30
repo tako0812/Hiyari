@@ -8,12 +8,12 @@
                 <h3>新着情報</h3>
             </div>
             <div class="col-md-8 text-center">
-                <div class="btn-group w-100 justify-content-center new-ranking btn-safari" role="group"
+                <div class="btn-group w-100 justify-content-center new-ranking" role="group"
                     aria-label="Basic outlined example">
                     <a href="{{ route('hiyari.new') }}" type="button"
-                        class="btn btn-outline-secondary btn-lg btn-safari @if (route('hiyari.new') == url()->full()) active @endif">平日</a>
+                        class="btn btn-outline-secondary btn-lg @if (route('hiyari.new') == url()->full()) active @endif">平日</a>
                     <a href="{{ route('hiyari.new.holiday') }}" type="button"
-                        class="btn btn-outline-secondary btn-lg btn-safari @if (route('hiyari.new.holiday') == url()->full()) active @endif">休日</a>
+                        class="btn btn-outline-secondary btn-lg @if (route('hiyari.new.holiday') == url()->full()) active @endif">休日</a>
                 </div>
             </div>
         </div>

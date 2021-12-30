@@ -9,8 +9,8 @@
             </div>
             <div class="col-md-8 text-center">
                 <div class="btn-group w-100 justify-content-center new-ranking" role="group" aria-label="Basic outlined example">
-                    <a href="{{ route('hiyari.ranking')}}"  type="button" class="btn btn-outline-secondary @if( route('hiyari.ranking')==url()->full()) active @endif">平日</a>
-                    <a href="{{ route('hiyari.ranking.holiday')}}" type="button" class="btn btn-outline-secondary @if( route('hiyari.ranking.holiday')==url()->full()) active @endif">休日</a>
+                    <a href="{{ route('hiyari.ranking')}}"  type="button" class="btn btn-outline-secondary btn-lg @if( route('hiyari.ranking')==url()->full()) active @endif">平日</a>
+                    <a href="{{ route('hiyari.ranking.holiday')}}" type="button" class="btn btn-outline-secondary btn-lg @if( route('hiyari.ranking.holiday')==url()->full()) active @endif">休日</a>
                 </div>
             </div>
         </div>
