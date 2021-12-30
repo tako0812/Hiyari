@@ -130,3 +130,7 @@ body {
     font-family: 'Material Icons';
     content: "\e88a";
 }
+
+.btn-safari {
+    border-radius: 0.1rem;
+}
