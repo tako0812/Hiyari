@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('ヒヤリハット') }}</div>
+                <div class="card-header">{{ __('ログイン') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
@@ -86,6 +86,30 @@
                 </div>
             </div>
         </div>
+        
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">ver0.1.1アップデート</div>
+                <div class="card-body">
+                    2021年12月30日
+                    <p>タブレット、スマホで表示されるメニューで、文字が表示される時がある不具合修正</p>
+                    <p>bootstrapのコード最適化</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">ver0.1.0公開</div>
+
+                <div class="card-body">
+                    2021年12月18日
+                    <p>システム公開</p>
+                </div>
+            </div>
+        </div>
+
+
     </div>
 </div>
 @endsection
