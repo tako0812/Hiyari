@@ -134,3 +134,7 @@ body {
 .btn-safari {
     border-radius: 0.1rem;
 }
+
+.btn {
+    -webkit-appearance: none;
+}
