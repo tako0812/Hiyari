@@ -1,15 +1,23 @@
-<!-- サイドバー -->
-<aside class="main-sidebar">
-    <section class="sidebar">
-        <ul class="sidebar-menu">
-
-            <!-- メニューヘッダ -->
-            <li class="header">顧客管理機能一覧</li>
-
-            <!-- メニュー項目 -->
-            <li id="new"><a href="/admin/member/new">新規登録</a></li>
-            <li id="edit"><a href="/admin/member/edit">編集</a></li>
-
-        </ul>
-    </section>
-</aside><!-- end sidebar -->
+{{-- @extends('..HiyariDetail')
+@section('sidebar')
+        //サイドバーの定義
+        <div class="col-md-2 d-none d-lg-block sidebar">
+            <ul class="nav flex-column nav-fill　nav-pills">
+                <li class="nav-item">
+                    <a class="nav-link  text-dark btn btn-outline-secondary inside-sidebar" href="{{ route('hiyari.new') }}">新着順</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark btn btn-outline-secondary inside-sidebar" href="{{ route('hiyari.ranking') }}">人気順</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark btn btn-outline-secondary inside-sidebar" href="{{ route('home') }}">検索</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark btn btn-outline-secondary inside-sidebar" href="{{ route('hiyari.create') }}">投稿</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark btn btn-outline-secondary inside-sidebar" href="{{ route('user.index') }}">ユーザー情報</a>
+                </li>
+            </ul>
+        </div>
+@endsection --}}

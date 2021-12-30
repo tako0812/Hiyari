@@ -86,3 +86,44 @@ body {
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
 }
+
+.sidebar {
+    margin-top: 1.4rem;
+}
+
+.inside-sidebar {
+    border: none;
+}
+
+.card-ichiran {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+
+/*マテリアアイコンの定義*/
+
+.person:before {
+    font-family: 'Material Icons';
+    content: "\e7fd";
+}
+
+.edit:before {
+    font-family: 'Material Icons';
+    content: "\e254";
+}
+
+.search:before {
+    font-family: 'Material Icons';
+    content: "\e8b6";
+}
+
+.crown:before {
+    font-family: 'Material Icons';
+    content: "\ea23";
+}
+
+.home:before {
+    font-family: 'Material Icons';
+    content: "\e88a";
+}

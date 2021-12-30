@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 
     <div class="container">
@@ -8,11 +7,7 @@
                 <h3>あなたのヒヤリハットの投稿履歴一覧</h3>
             </div>
         </div>
-    </div>
-    @foreach ($hiyari as $inside)
-
-
-        <div class="container">
+        @foreach ($hiyari as $inside)
             <div class="row justify-content-center">
                 <div class="col-md-8">
                     <a href="../hiyari/detail/{{ $inside->id }}" class="card text-dark ">
@@ -44,21 +39,14 @@
                                 </tr>
                             </table>
                             {{ $inside->text }}
-
                         </div>
-
                     </a>
                     @can('admin-higher')　
-                    <a class="btn" href="{{ route('hiyari.edit', ['id' => $inside->id]) }}">編集する</a>
-                    <a class="btn" href="{{ route('hiyari.delete', ['id' => $inside->id]) }}">削除する</a>
+                        <a class="btn" href="{{ route('hiyari.edit', ['id' => $inside->id]) }}">編集する</a>
+                        <a class="btn" href="{{ route('hiyari.delete', ['id' => $inside->id]) }}">削除する</a>
                     @endcan
                 </div>
             </div>
-
-        </div>
-
-
-
-
-    @endforeach
+        @endforeach
+    </div>
 @endsection

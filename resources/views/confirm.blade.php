@@ -1,17 +1,12 @@
 @extends('layouts.app')
-
-
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-
                 <div class="card">
                     <div class="card-header">
                         <p>登録内容の確認</p>
                     </div>
-
-
                     <form method="post" action="{{ route('hiyari.send') }}">
                         @csrf
                         <div class="card-body">
@@ -48,8 +43,6 @@
                                     <td>業務内容</td>
                                     <td>{{ $operation_name->operation_name }}</td>
                                 </tr>
-
-
                             </table>
                             <p>ヒヤリハット内容 </p>
                             <p>{{ $input['text'] }}</p>

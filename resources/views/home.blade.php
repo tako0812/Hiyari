@@ -19,8 +19,10 @@
                 </div>
             </div>
         </div>
-{{-- 
-        <div class="row justify-content-center">
+    </div>
+@endsection
+
+{{-- <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">キーワードで検索(未実装)
@@ -43,5 +45,3 @@
 
             </div>
         </div> --}}
-    </div>
-@endsection

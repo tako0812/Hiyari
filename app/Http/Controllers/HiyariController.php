@@ -180,7 +180,7 @@ class HiyariController extends Controller
     {
         $hiyari = new Hiyari;
         $ret = $hiyari->get_hiyari_new();
-        return view('HiyariNew', compact('ret'));
+        return view('HiyariNew', compact('ret','hiyari'));
     }
     //ヒヤリハット新着休日
     public function HiyariNewHoliday()

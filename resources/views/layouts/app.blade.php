@@ -77,7 +77,7 @@
                                     <a class="dropdown-item" href="{{ route('user.index') }}">ユーザー情報を確認する</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                     document.getElementById('logout-form').submit();">
+                                                                                         document.getElementById('logout-form').submit();">
                                         {{ __('ログアウト') }}
 
                                     </a>
@@ -99,67 +99,101 @@
 
 
         <main class="py-4">
-            @yield('content')
+            {{-- <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-2 d-none d-lg-block sidebar">
+                        <ul class="nav flex-column nav-fill　nav-pills">
+                            <li class="nav-item">
+                                <a class="nav-link  text-dark btn btn-outline-secondary inside-sidebar" href="{{ route('hiyari.new') }}">新着順</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark btn btn-outline-secondary inside-sidebar" href="{{ route('hiyari.ranking') }}">人気順</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark btn btn-outline-secondary inside-sidebar" href="{{ route('home') }}">検索</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark btn btn-outline-secondary inside-sidebar" href="{{ route('hiyari.create') }}">投稿</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark btn btn-outline-secondary inside-sidebar" href="{{ route('user.index') }}">ユーザー情報</a>
+                            </li>
+                        </ul>
+                    </div> --}}
+                    {{-- <div class="col-md-10"> --}}
+                         @yield('content')
+                    {{-- </div> --}}
+                {{-- </div> --}}
+            {{-- </div> --}}
         </main>
+
+
+
         <div class="container-fluid futmenu d-lg-none">
             <div class="row justify-content-center secondry">
 
                 {{-- アンダーメニューの表示と色の判定 --}}
                 @if (route('hiyari.new') == url()->current() or route('hiyari.new.holiday') == url()->current())
                     <a class="col" href="{{ route('hiyari.new') }}">
-                        <i class="material-icons undermenu-icon-clicked">home</i>
+                        <i class="material-icons undermenu-icon-clicked home"></i>
                     </a>
 
                 @else
                     <a class="col" href="{{ route('hiyari.new') }}">
-                        <i class="material-icons undermenu-icon">home</i>
+                        <i class="material-icons undermenu-icon home"></i>
                     </a>
                 @endif
-                
+
                 @if (route('hiyari.ranking') == url()->current() or route('hiyari.ranking.holiday') == url()->current())
                     <a class="col" href="{{ route('hiyari.ranking') }}">
-                        <i class="material-icons undermenu-icon-clicked">emoji_events</i>
+                        <i class="material-icons undermenu-icon-clicked crown"></i>
                     </a>
 
                 @else
                     <a class="col" href="{{ route('hiyari.ranking') }}">
-                        <i class="material-icons undermenu-icon">emoji_events</i>
+                        <i class="material-icons undermenu-icon crown"></i>
                     </a>
                 @endif
 
 
                 @if (route('home') == url()->current())
                     <a class="col" href="{{ route('home') }}">
-                        <i class="material-icons undermenu-icon-clicked">search</i>
+                        <i class="material-icons undermenu-icon-clicked search"></i>
                     </a>
 
                 @else
                     <a class="col" href="{{ route('home') }}">
-                        <i class="material-icons undermenu-icon">search</i>
+                        <i class="material-icons undermenu-icon search"></i>
                     </a>
                 @endif
 
                 @if (route('hiyari.create') == url()->current())
                     <a class="col" href="{{ route('hiyari.create') }}">
-                        <i class="material-icons undermenu-icon-clicked">edit</i>
+                        <i class="material-icons undermenu-icon-clicked edit"></i>
                     </a>
 
                 @else
                     <a class="col" href="{{ route('hiyari.create') }}">
-                        <i class="material-icons undermenu-icon">edit</i>
+                        <i class="material-icons undermenu-icon edit"></i>
                     </a>
                 @endif
 
                 @if (route('user.index') == url()->current())
                     <a class="col" href="{{ route('user.index') }}">
-                        <i class="material-icons undermenu-icon-clicked">person</i>
+                        <i class="material-icons undermenu-icon-clicked person"></i>
                     </a>
-
                 @else
                     <a class="col" href="{{ route('user.index') }}">
-                        <i class="material-icons undermenu-icon">person</i>
+                        <i class="material-icons undermenu-icon person"></i>
                     </a>
                 @endif
+
+
+
+
+
+
+
             </div>
         </div>
     </div>

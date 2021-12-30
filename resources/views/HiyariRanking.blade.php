@@ -13,13 +13,12 @@
                     <a href="{{ route('hiyari.ranking.holiday')}}" type="button" class="btn btn-outline-secondary @if( route('hiyari.ranking.holiday')==url()->full()) active @endif">休日</a>
                 </div>
             </div>
-
         </div>
         @foreach ($ret as $inside)
-            <div class="container">
+
                 <div class="row justify-content-center">
                     <div class="col-md-8">
-                        <a href="../hiyari/detail/{{ $inside->id }}" class="card text-dark ">
+                        <a href="../hiyari/detail/{{ $inside->id }}" class="card text-dark card-ichiran">
                             <div class="card-header">
                                 {{ $inside->title }}
                             </div>
@@ -48,12 +47,7 @@
                                     </tr>
                                 </table>
                                 {{ Str::limit($inside->text, 300, '...続きを読む') }}
-
-
-
-
                             </div>
-
                         </a>
                         @can('admin-higher')　
                         <a class="btn" href="{{ route('hiyari.edit', ['id' => $inside->id]) }}">編集する</a>
@@ -62,10 +56,7 @@
                     </div>
                 </div>
 
-            </div>
-
-
-
-
-        @endforeach
-    @endsection
+         @endforeach
+    </div>
+@endsection
+    

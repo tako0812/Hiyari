@@ -23,7 +23,7 @@
                     <div class="card-header">ヒヤリハット新規入力フォーム</div>
 
                     <div class="card-body">
-                        <form action="{{ route('hiyari.update',$ret->id) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('hiyari.update', $ret->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
 
                             <div class="form-group">
@@ -101,21 +101,20 @@
                             <div class="form-group">
                                 <label>ヒヤリハットのタイトル</label>
                                 <input class="form-control" type="text" name="title" required
-                                    value="@if (old('title')==null){{$ret->title}}@else{{ old('title') }}@endif">
+                                    value="@if (old('title') == null){{ $ret->title }}@else{{ old('title') }}@endif">
                             </div>
                             <div class="form-group">
                                 <label>ヒヤリハット内容</label>
                                 <textarea class="form-control" rows="10" type="text" name="text"
-                                    required>@if(old('text')==null){{$ret->text}}@else{{ old('text') }}@endif</textarea>
+                                    required>@if (old('text') == null){{ $ret->text }}@else{{ old('text') }}@endif</textarea>
                             </div>
                             <div class="form-group">
                                 <button class="btn 	btn-primary btn-lg">内容を変更する</button>
                             </div>
                         </form>
                     </div>
-
-
                 </div>
             </div>
         </div>
-    @endsection
+    </div>
+@endsection

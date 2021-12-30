@@ -74,7 +74,8 @@
                                 <select class="form-control" name="jobs_id" required>
                                     <option disabled selected value>職種選択</option>
                                     @foreach ($job_name as $job)
-                                        <option value="{{ $job->id }}" @if (old('jobs_id') == $job->id) selected  @endif>{{ $job->job_name }}
+                                        <option value="{{ $job->id }}" @if (old('jobs_id') == $job->id) selected  @endif>
+                                            {{ $job->job_name }}
                                         </option>
                                     @endforeach
                                 </select>
@@ -127,4 +128,5 @@
                 </div>
             </div>
         </div>
-    @endsection
+    </div>
+@endsection

@@ -71,4 +71,5 @@ class Hiyari extends Model
     {
         return $this->belongsTo('App\Weeks','day_of_week','id');
     }
+
 }

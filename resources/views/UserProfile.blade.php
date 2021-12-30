@@ -5,7 +5,7 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">
-     詳細情報
+                        詳細情報
                     </div>
                     <div class="card-body">
                         <table class="table">
@@ -25,9 +25,10 @@
 
                         </table>
 
-                </div>
-                {{-- <a class="btn" href="{{ route('user.edit', ['id' => $user->id]) }}">編集する</a> --}}
+                    </div>
+                    {{-- <a class="btn" href="{{ route('user.edit', ['id' => $user->id]) }}">編集する</a> --}}
 
+                </div>
             </div>
         </div>
     </div>
