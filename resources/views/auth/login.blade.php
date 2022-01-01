@@ -88,36 +88,19 @@
         </div>
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">ver0.1.2不具合修正【2021年12月31日】</div>
+                <div class="card-header">アップデート情報</div>
                 <div class="card-body">
+                   <p>【2021年12月31日】不具合修正</p>
                     <p>iPhoneでブラウザバックした時のボタンの表示バグ修正</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">ver0.1.1不具合修正【2021年12月30日】</div>
-                <div class="card-body">
-                   
+                    <p>スマホ版入力フォームで自動的に拡大されてしまう不具合修正</p>
+                    <p>【2021年12月30日】不具合修正</p>
                     <p>タブレット、スマホで表示されるメニューで、文字が表示される時がある不具合修正</p>
                     <p>bootstrapのコード最適化</p>
+                    <p>【2021年12月18日】システム公開</p>
+                    システムデプロイ完了
                 </div>
             </div>
         </div>
-
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">ver0.1.0公開【2021年12月18日】</div>
-
-                <div class="card-body">
-                   
-                    <p>システム公開</p>
-                </div>
-            </div>
-        </div>
-
-
     </div>
 </div>
 @endsection
