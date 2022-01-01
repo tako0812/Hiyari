@@ -54,7 +54,7 @@
                                 <select class="form-control" name="day_of_week" required>
                                     <option disabled selected value>平日・休日を選択してください</option>
                                     @foreach ($day_of_week as $week)
-                                        <option value="{{ $week->id }}" @if (old('day_of_week') == $week->name) selected  @endif>
+                                        <option value="{{ $week->id }}" @if (old('day_of_week') == $week->id) selected  @endif>
                                             {{ $week->name }}
                                         </option>
                                     @endforeach

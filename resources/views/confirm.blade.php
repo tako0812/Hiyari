@@ -20,6 +20,10 @@
                                     <td>{{ $input['day'] }}</td>
                                 </tr>
                                 <tr>
+                                    <td>平日休日</td>
+                                    <td>{{$day_of_week->name}}</td>
+                                </tr>
+                                <tr>
                                     <td>発生時刻</td>
                                     <td>{{ $input['time'] }}</td>
                                 </tr>
@@ -32,6 +36,7 @@
                                     <td>年齢</td>
                                     <td>{{ $age_name->age_name }}</td>
                                 </tr>
+
 
                                 <tr>
                                     <td>発生場所</td>

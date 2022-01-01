@@ -53,6 +53,9 @@
                                 <input type="date" class="form-control" name="day" required
                                     value="@if (old('day') == null){{ $ret->day }}@else{{ old('day') }}@endif">
                             </div>
+
+
+                            
                             <div class="form-group">
                                 <label>発生時刻</label>
                                 <input type="time" class="form-control" name="time" required
