@@ -25,10 +25,7 @@ class Hiyari extends Model
         return $ret;
     }
 
-    public function likes()
-    {
-        return $this->hasMany('App\Like');
-    }
+  
     //後でViewで使う、いいねされているかを判定するメソッド。
     public function isLikedBy($user, $hiyari): bool
     {
@@ -72,4 +69,8 @@ class Hiyari extends Model
         return $this->belongsTo('App\Weeks','day_of_week','id');
     }
 
+    public function likes()
+    {
+        return $this->hasMany('App\Like','hiyari_id','id');
+    }
 }

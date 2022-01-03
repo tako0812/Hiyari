@@ -11,9 +11,8 @@
                     <div class="chart-area">
                     <canvas id="chart01"></canvas>
                     </div>
-                    <!--/box--></div>
-                
-
+                    </div>
+    
             </div>
         </div>
     </div>

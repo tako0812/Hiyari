@@ -180,6 +180,8 @@ class HiyariController extends Controller
     {
         $hiyari = new Hiyari;
         $ret = $hiyari->get_hiyari_new();
+        // $like = new Like;
+        // $like_count = $like->LikeCount($id);
         return view('HiyariNew', compact('ret','hiyari'));
     }
     //ヒヤリハット新着休日
@@ -187,7 +189,7 @@ class HiyariController extends Controller
     {
         $hiyari = new Hiyari;
         $ret = $hiyari->get_hiyari_new_holiday();
-        return view('HiyariNew', compact('ret'));
+        return view('HiyariNew', compact('ret','hiyari'));
     }
 
     //ヒヤリハットランキング平日
