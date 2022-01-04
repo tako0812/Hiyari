@@ -139,7 +139,7 @@ body {
     -webkit-appearance: none;
 }
 
-h4 {
+.h4 {
     padding: 0.3rem 0.3rem;
     border-left: 5px solid #000;
     background: #f4f4f4;
