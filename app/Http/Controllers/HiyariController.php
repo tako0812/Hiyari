@@ -195,14 +195,16 @@ class HiyariController extends Controller
     //ヒヤリハットランキング平日
     public function hiyariranking()
     {
+        $hiyari = new Hiyari;
         $ret = Hiyari::where("day_of_week","1")->withCount('likes')->orderBy('likes_count', 'desc')->paginate(10);
-        return view('HiyariRanking', compact('ret'));
+        return view('HiyariRanking', compact('ret','hiyari'));
     }
     //ヒヤリハットランキング休日
     public function HiyariRankingHoliday()
     {
+        $hiyari = new Hiyari;
         $ret = Hiyari::where("day_of_week","2")->withCount('likes')->orderBy('likes_count', 'desc')->paginate(10);
-        return view('HiyariRanking', compact('ret'));
+        return view('HiyariRanking', compact('ret','hiyari'));
     }
 
 

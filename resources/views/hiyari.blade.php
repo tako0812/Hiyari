@@ -19,8 +19,9 @@
                                 <div class="card-body">
                                     @foreach ($ret as $inside)
                                         @if ($inside->train_id == $work->train_id)
-                                            <a href="../hiyari/detail/{{ $inside->id }}" class="card text-dark ">
-                                                <div class="card-header ">
+                                        <div class="card">
+                                            <a href="../hiyari/detail/{{ $inside->id }}" class="text-dark">
+                                                <div class="card-header">
                                                     {{ $inside->title }}
                                                 </div>
                                                 <div class="card-body">
@@ -50,6 +51,34 @@
                                                     {{ $inside->text }}
                                                 </div>
                                             </a>
+                                            <div class="card-footer">
+                                                @auth
+                    
+                                                    <!-- Review.phpに作ったisLikedByメソッドをここで使用 -->
+                                                    @if (!$hiyari->isLikedBy(Auth::user(), $inside->id))
+                                                        <span class="likes">
+                                                            <i class="material-icons like-toggle iine"
+                                                                data-review-id="{{ $inside->id }}">thumb_up　いいね！</i>
+                                                            <span class="like-counter">{{ $inside->likes()->count('hiyari_id') }}</span>
+                    
+                                                        </span><!-- /.likes -->
+                                                    @else
+                                                        <span class="likes">
+                                                            <i class="material-icons like-toggle liked iine"
+                                                                data-review-id="{{ $inside->id }}">thumb_up　いいね！</i>
+                                                            <span class="like-counter">{{ $inside->likes()->count('hiyari_id') }}</span>
+                                                        </span><!-- /.likes -->
+                                                    @endif
+                                                @endauth
+                                                @guest
+                                                    <span class="likes ">
+                                                        <i class="material-icons iine">thumb_up　いいね！</i>
+                                                        {{-- <span class="like-counter">{{ $like_count }}</span> --}}
+                                                    </span><!-- /.likes -->
+                    
+                                                @endguest
+                                            </div>
+                                        </div>
                                         @endif
                                     @endforeach
                                 </div>
