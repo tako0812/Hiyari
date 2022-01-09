@@ -57,28 +57,29 @@
                             </div>
 
                         </a>
+                        
                         <div class="card-footer">
                             @auth
 
                             <!-- Review.phpに作ったisLikedByメソッドをここで使用 -->
                             @if (!$hiyari->isLikedBy(Auth::user(), $inside->id))
                                 <span class="likes">
-                                    <i class="material-icons like-toggle iine"
-                                        data-review-id="{{ $inside->id }}">thumb_up　いいね！</i>
+                                    <i class="material-icons like-toggle like"
+                                        data-review-id="{{ $inside->id }}">いいね！</i>
                                     <span class="like-counter">{{($inside->likes()->count('hiyari_id'))}}</span>
                                     
                                 </span><!-- /.likes -->
                             @else
                                 <span class="likes">
-                                    <i class="material-icons like-toggle liked iine"
-                                        data-review-id="{{ $inside->id }}">thumb_up　いいね！</i>
+                                    <i class="material-icons like-toggle  like liked"
+                                        data-review-id="{{ $inside->id }}">いいね！</i>
                                     <span class="like-counter">{{($inside->likes()->count('hiyari_id'))}}</span>
                                 </span><!-- /.likes -->
                             @endif
                         @endauth
                         @guest
                             <span class="likes ">
-                                <i class="material-icons iine">thumb_up　いいね！</i>
+                                <i class="material-icons">いいね！</i>
                                 {{-- <span class="like-counter">{{ $like_count }}</span> --}}
                             </span><!-- /.likes -->
 

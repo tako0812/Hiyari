@@ -46,26 +46,13 @@ a:active {
     transform: rotate(45deg);
 }
 
-.liked {
-    color: #3490dc;
-}
-
 body {
     margin-bottom: 3.5rem;
 }
 
 .material-icons {
-    font-size: 1.5rem;
+    font-size: 1rem;
     cursor: pointer;
-}
-
-.iine {
-    padding: 0.5rem 1rem;
-    font-size: 1.125rem;
-    line-height: 1.5;
-    border: 1px solid;
-    border-radius: 0.5rem;
-    border-color: #eeeeee;
 }
 
 .undermenu-icon {
@@ -144,4 +131,26 @@ h4 {
     border-left: 5px solid #000;
     background: #f4f4f4;
     font-size: 1rem;
+}
+
+.like:before {
+    font-family: 'Material Icons Outlined';
+    content: "\e8dc";
+    color: black;
+    margin-right: 0.3rem;
+}
+
+.liked:before {
+    font-family: 'Material Icons';
+    content: "\e8dc";
+    color: #3b5998;
+}
+
+.card-footer {
+    /* margin-bottom: 0.1rem; */
+    padding: 0.4rem;
+    background-color: white;
+    border-top: 1px solid rgba(0, 0, 0, 0.125);
+    margin-left: 1rem;
+    margin-right: 1rem;
 }
