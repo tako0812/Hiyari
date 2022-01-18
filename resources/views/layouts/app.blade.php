@@ -13,7 +13,12 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/chart.js') }}" defer></script>
     <script src="{{ asset('js/like.js') }}" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+    <script src="{{ mix('js/show_chart.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+
     <script defer src="https://use.fontawesome.com/releases/v5.15.1/js/all.js"></script>
 
     <!-- Fonts -->
@@ -75,9 +80,10 @@
                                     <a class="dropdown-item" href="{{ route('home') }}">検索する</a>
                                     <a class="dropdown-item" href="{{ route('hiyari.create') }}">投稿する</a>
                                     <a class="dropdown-item" href="{{ route('user.index') }}">ユーザー情報を確認する</a>
+                                    <a class="dropdown-item" href="{{ route('Analytics.index') }}">ヒヤリハットを解析する</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                         document.getElementById('logout-form').submit();">
+                                                                                             document.getElementById('logout-form').submit();">
                                         {{ __('ログアウト') }}
 
                                     </a>
@@ -120,10 +126,10 @@
                             </li>
                         </ul>
                     </div> --}}
-                    {{-- <div class="col-md-10"> --}}
-                         @yield('content')
-                    {{-- </div> --}}
-                {{-- </div> --}}
+            {{-- <div class="col-md-10"> --}}
+            @yield('content')
+            {{-- </div> --}}
+            {{-- </div> --}}
             {{-- </div> --}}
         </main>
 
@@ -156,7 +162,7 @@
                 @endif
 
 
-                @if (route('home') == url()->current())
+                @if (route('home') == url()->current() or request()->is('*work*'))
                     <a class="col" href="{{ route('home') }}">
                         <i class="material-icons undermenu-icon-clicked search"></i>
                     </a>
@@ -178,6 +184,19 @@
                     </a>
                 @endif
 
+
+
+                @if (route('Analytics.index') == url()->current())
+                    <a class="col" href="{{ route('Analytics.index') }}">
+                        <i class="material-icons undermenu-icon-clicked assessment"></i>
+                    </a>
+                @else
+                    <a class="col" href="{{ route('Analytics.index') }}">
+                        <i class="material-icons undermenu-icon assessment"></i>
+                    </a>
+                @endif
+
+                
                 @if (route('user.index') == url()->current())
                     <a class="col" href="{{ route('user.index') }}">
                         <i class="material-icons undermenu-icon-clicked person"></i>
@@ -187,8 +206,6 @@
                         <i class="material-icons undermenu-icon person"></i>
                     </a>
                 @endif
-
-
 
 
 

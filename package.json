@@ -23,6 +23,7 @@
         "vue-template-compiler": "^2.6.14"
     },
     "dependencies": {
-        "chart.js": "^3.6.2"
+        "chart.js": "^3.7.0",
+        "chartjs-plugin-datalabels": "^2.0.0"
     }
 }

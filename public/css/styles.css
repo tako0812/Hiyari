@@ -118,6 +118,11 @@ body {
     content: "\e88a";
 }
 
+.assessment::before {
+    font-family: 'Material Icons';
+    content: "\e85c";
+}
+
 .btn-safari {
     border-radius: 0.1rem;
 }

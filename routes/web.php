@@ -74,4 +74,10 @@ Route::middleware(['auth'])->group(function () {
 
     //---------------------------------いいね処理---------------------------------------------------
     Route::post('/like', 'HiyariController@like')->name('hiyari.like');
+
+
+
+    //---------------------------------解析処理-------------------------------------------------------
+    Route::get('/chart','AnalyticsController@index')->name('Analytics.index');
+
 });
