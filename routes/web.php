@@ -22,19 +22,14 @@ Route::middleware(['auth'])->group(function () {
     //---------------------------------ヒヤリハット処理---------------------------------------------------
     //トップ画面。
     Route::get('/home', 'HomeController@index')->name('home');
-
     //新着順でのヒヤリハット共有画面　平日
     Route::get('/', 'HiyariController@hiyarinew')->name('hiyari.new');
     //新着順でのヒヤリハット共有画面　休日
     Route::get('/holiday', 'HiyariController@HiyariNewHoliday')->name('hiyari.new.holiday');
-
     //いいね数でのヒヤリハット共有画面　平日
     Route::get('/ranking', 'HiyariController@hiyariranking')->name('hiyari.ranking');
     //いいね数でのヒヤリハット共有画面　休日
     Route::get('/ranking/holiday', 'HiyariController@HiyariRankingHoliday')->name('hiyari.ranking.holiday');
-
-
-
     //勤務ベースでのヒヤリハット共有画面
     Route::get('/work/{id}', 'HiyariController@index')->name('work.hiyari.index');
     //ヒヤリハットの詳細表示画面
@@ -59,8 +54,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post('hiyari/remove', 'HiyariController@remove')->name('hiyari.remove');
     //ヒヤリハットユーザーランキング
     Route::get('/hiyari/UserRanking', "HiyariController@LikeUserRanking")->name("LikeUserRanking");
-    //ヒヤリハットの解析
-    // Route::get('/analytics',"HiyariController@analytics")->name("analytics");
 
 
     //---------------------------------ユーザー処理---------------------------------------------------
@@ -79,5 +72,8 @@ Route::middleware(['auth'])->group(function () {
 
     //---------------------------------解析処理-------------------------------------------------------
     Route::get('/chart','AnalyticsController@index')->name('Analytics.index');
+
+    //---------------------------------アップデート情報-----------------------------------------------
+    Route::view('/update','update');
 
 });

@@ -110,6 +110,7 @@ window.make_log = function make_log(id, labels, data) {
 //対数チャート
 window.make_bar = function make_bar(id, labels, data) {
     var ctx = document.getElementById(id).getContext('2d');
+
     var myChart = new Chart(ctx, {
         type: 'bar',
         data: {

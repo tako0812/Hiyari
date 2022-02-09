@@ -30,15 +30,15 @@
                             </div>
 
                             <!-- <div class="col-md-6">
-                                            
-                                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                                
+                                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
-                                                @error('email')
-                                                                <span class="invalid-feedback" role="alert">
-                                                                    <strong>{{ $message }}</strong>
-                                                                </span>
-                                                @enderror
-                                            </div> -->
+                                                    @error('email')
+                                                                        <span class="invalid-feedback" role="alert">
+                                                                            <strong>{{ $message }}</strong>
+                                                                        </span>
+                                                    @enderror
+                                                </div> -->
 
 
                             <div class="form-group row">
@@ -81,10 +81,6 @@
                                     {{ __('パスワードを忘れた方') }}
                                 </a> --}}
                                     @endif
-
-
-
-
                                 </div>
                             </div>
 
@@ -92,41 +88,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-8">
-
-
-
-                <div class="card">
-                    <div class="card-header">アップデート情報</div>
-                    <div class="card-body">
-                        <h4>2022年1月18日　アップデート</h4>
-                        <p>ヒヤリハット解析機能（デモ版）を追加</p>
-                        <p>今回は架空のデータをもとにグラフを生成しています。実際のデータをもとにグラフを生成することも可能です。</p>
-
-
-                        <h4>2022年1月9日　アップデート</h4>
-                        <p>・「いいね」のデザイン改変</p>
-                        <h4>2022年1月3日　アップデート</h4>
-                        <p>・ヒヤリハット新着、ランキング等の画面で「いいね」ができるように機能更新</p>
-
-                        <h4>2022年1月1日　修正</h4>
-                        <p>・送信確認画面で「戻る」を選択した場合に、平休情報が自動的に入力されない不具合を修正</p>
-                        <h4>
-                            2021年12月31日　修正 </h4>
-                        <p>・iPhoneでブラウザバックした時のボタンの表示不具合修正</p>
-                        <p>・スマホ版入力フォームで自動的に拡大される仕様を変更</p>
-                        <h4>
-                            2021年12月30日　修正
-                        </h4>
-                        <p>・画面の下のメニューが文字として出力される場合がある不具合を修正</p>
-                        <p>・bootstrapのコード最適化</p>
-                        <h4>
-                            2021年12月18日　システム公開
-                        </h4>
-                        ・システムデプロイ完了
-                    </div>
-                </div>
-            </div>
+            
         </div>
     </div>
 @endsection

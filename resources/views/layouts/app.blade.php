@@ -165,11 +165,15 @@
                 @if (route('home') == url()->current() or request()->is('*work*'))
                     <a class="col" href="{{ route('home') }}">
                         <i class="material-icons undermenu-icon-clicked search"></i>
+                        
                     </a>
 
                 @else
+
                     <a class="col" href="{{ route('home') }}">
+                        
                         <i class="material-icons undermenu-icon search"></i>
+                        
                     </a>
                 @endif
 
@@ -197,7 +201,7 @@
                 @endif
 
                 
-                @if (route('user.index') == url()->current())
+                {{-- @if (route('user.index') == url()->current())
                     <a class="col" href="{{ route('user.index') }}">
                         <i class="material-icons undermenu-icon-clicked person"></i>
                     </a>
@@ -205,7 +209,7 @@
                     <a class="col" href="{{ route('user.index') }}">
                         <i class="material-icons undermenu-icon person"></i>
                     </a>
-                @endif
+                @endif --}}
 
 
 
